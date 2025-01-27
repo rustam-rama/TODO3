@@ -10,21 +10,21 @@ export const useFetchTodo = () => {
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const todosRef = ref(db, 'todos');
+        const todosRef = ref(db, "todos");
         const snapshot = await get(todosRef);
         
         if (snapshot.exists()) {
           const todosData = snapshot.val();
           const todosArray = Object.entries(todosData).map(([id, data]) => ({
             id,
-            ...data
+            ...data,
           }));
           setTodos(todosArray);
         } else {
           setTodos([]);
         }
       } catch {
-        setError('Ошибка при загрузке задач');
+        setError("Ошибка при загрузке задач");
       } finally {
         setIsLoading(false);
       }

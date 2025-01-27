@@ -1,7 +1,19 @@
 {
   "rules": {
-    "items": {
-      ".indexOn": ["name", "price", "category"]
+    "todos": {
+      ".read": true,
+      ".write": true,
+      "$todoId": {
+        ".read": true,
+        ".write": true,
+        ".validate": "newData.hasChildren(['title', 'completed'])",
+        "title": {
+          ".validate": "newData.isString() && newData.val().length > 0"
+        },
+        "completed": {
+          ".validate": "newData.isBoolean()"
+        }
+      }
     }
   }
 } 

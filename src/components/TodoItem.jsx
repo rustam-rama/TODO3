@@ -8,10 +8,10 @@ const TodoItem = ({ todo, onUpdate, onDelete, onToggleComplete }) => {
   if (!todo?.id || !todo?.title) return null;
 
   return (
-    <div className={`todo-item ${todo.completed ? 'completed' : ''}`}>
+    <div className={`todo-item ${todo.completed ? "completed" : ""}`}>
       <div className="todo-content">
-        <div 
-          className={`todo-checkbox ${todo.completed ? 'completed' : ''}`}
+        <div
+          className={`todo-checkbox ${todo.completed ? "completed" : ""}`}
           onClick={() => onToggleComplete(todo.id, todo.completed)}
         />
         {editingId === todo.id ? (
@@ -31,16 +31,13 @@ const TodoItem = ({ todo, onUpdate, onDelete, onToggleComplete }) => {
             >
               Сохранить
             </button>
-            <button 
-              onClick={() => setEditingId(null)} 
-              className="todo-button"
-            >
+            <button onClick={() => setEditingId(null)} className="todo-button">
               Отмена
             </button>
           </div>
         ) : (
           <>
-            <span className={`todo-text ${todo.completed ? 'completed' : ''}`}>
+            <span className={`todo-text ${todo.completed ? "completed" : ""}`}>
               {todo.title}
             </span>
             <div className="todo-actions">

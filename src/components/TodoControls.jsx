@@ -11,7 +11,7 @@ const TodoControls = ({ searchQuery, onSearch, isSorted, onSort }) => (
     />
     <button
       onClick={onSort}
-      className={`todo-sort-button ${searchQuery ? 'enabled' : ''}`}
+      className={`todo-sort-button ${searchQuery ? "enabled" : ""}`}
       disabled={!searchQuery}
     >
       {isSorted ? "Отменить сортировку" : "Сортировать по алфавиту"}

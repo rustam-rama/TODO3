@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from "react";
+import PropTypes from "prop-types";
 
 const TodoForm = ({ onAddTodo }) => {
-  const [newTodo, setNewTodo] = useState('');
+  const [newTodo, setNewTodo] = useState("");
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -11,10 +11,10 @@ const TodoForm = ({ onAddTodo }) => {
 
     try {
       await onAddTodo(newTodo);
-      setNewTodo('');
+      setNewTodo("");
       setError(null);
     } catch (err) {
-      setError('Ошибка при добавлении задачи');
+      setError("Ошибка при добавлении задачи");
     }
   };
 

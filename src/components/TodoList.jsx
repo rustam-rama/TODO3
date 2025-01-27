@@ -26,7 +26,7 @@ const TodoList = () => {
   );
 
   const handleSort = useCallback(() => {
-    setIsSorted(prev => !prev);
+    setIsSorted((prev) => !prev);
     if (isSorted) setSearchQuery("");
   }, [isSorted]);
 
@@ -37,8 +37,12 @@ const TodoList = () => {
 
     if (isSorted && searchQuery) {
       return [...todos]
-        .filter(todo => todo?.title?.toLowerCase().includes(searchQuery.toLowerCase()))
-        .sort((a, b) => a?.title?.toLowerCase().localeCompare(b?.title?.toLowerCase()));
+        .filter((todo) =>
+          todo?.title?.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+        .sort((a, b) =>
+          a?.title?.toLowerCase().localeCompare(b?.title?.toLowerCase())
+        );
     }
 
     return [...todos];
@@ -59,13 +63,13 @@ const TodoList = () => {
       />
       <div className="todo-items-container">
         {filteredAndSortedTodos.length ? (
-          filteredAndSortedTodos.map(todo => (
+          filteredAndSortedTodos.map((todo) => (
             <TodoItem
               key={todo.id}
               todo={todo}
               onUpdate={updateTodo}
               onDelete={deleteTodo}
-              onToggleComplete={(id, completed) => 
+              onToggleComplete={(id, completed) =>
                 updateTodo(id, { completed: !completed })
               }
             />
