@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "items": {
+      ".indexOn": ["name", "price", "category"]
+    }
+  }
+} 

@@ -1,0 +1,355 @@
+/* Основной контейнер */
+.todo-list-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #1a1b26;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок */
+.todo-list-title {
+  color: #9d7bff;
+  font-size: 39px;
+  font-weight: 600;
+  margin-bottom: 44px;
+  text-align: center;
+}
+
+/* Форма добавления */
+.todo-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+/* Общие стили для всех полей ввода */
+.todo-input,
+.todo-search {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #2d2e3d;
+  color: #6c7293; /* Унифицированный цвет текста */
+  font-size: 14px; /* Унифицированный размер шрифта */
+}
+
+.todo-input::placeholder,
+.todo-search::placeholder {
+  color: #6c7293; /* Тот же цвет для плейсхолдеров */
+  font-size: 14px;
+}
+
+/* Основная кнопка добавления */
+.add-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  background: #9d7bff;
+  color: #ffffff;
+  font-size: 14px; /* Унифицированный размер шрифта */
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.add-button:hover {
+  background: #8a6ae6;
+}
+
+/* Список задач */
+.todo-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Стили для каждого элемента */
+.todo-item {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Стили для выполненной задачи */
+.todo-item.completed {
+  background: #f8f9fe;
+  border-left: 4px solid #2ecc71; /* Зеленая полоска слева */
+  opacity: 0.9; /* Немного приглушаем выполненные задачи */
+}
+
+/* Чекбокс */
+.todo-checkbox {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #9d7bff; /* Фиолетовая рамка для невыполненных */
+  border-radius: 6px;
+  margin-right: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Чекбокс выполненной задачи */
+.todo-checkbox.completed {
+  background: #2ecc71; /* Зеленый фон для выполненных */
+  border-color: #2ecc71; /* Зеленая рамка для выполненных */
+}
+
+/* Галочка внутри чекбокса */
+.todo-checkbox.completed::after {
+  content: "✓";
+  position: absolute;
+  color: white;
+  font-size: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Текст задачи */
+.todo-text {
+  color: #333333;
+  font-size: 16px;
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+/* Текст выполненной задачи */
+.todo-text.completed {
+  color: #666666;
+  text-decoration: line-through;
+}
+
+/* Кнопки действий (редактировать/удалить) */
+.todo-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #9d7bff;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.todo-button:hover {
+  background: #8a6ae6;
+}
+
+.todo-button.delete {
+  background: #ff7b7b;
+  color: #ffffff;
+}
+
+.todo-button.delete:hover {
+  background: #e66a6a;
+}
+
+/* Поиск и сортировка */
+.todo-controls {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+/* Кнопка сортировки */
+.todo-sort-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  background: #9d7bff;
+  color: #ffffff;
+  font-size: 14.5px; 
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.todo-sort-button:disabled {
+  background: #2d2e3d;
+  color: #6c7293;
+  cursor: not-allowed;
+}
+
+.todo-sort-button:hover:not(:disabled) {
+  background: #8a6ae6;
+}
+
+/* Состояния */
+.loading, .error, .no-todos {
+  text-align: center;
+  padding: 20px;
+  color: #6c7293;
+  font-size: 16px;
+}
+
+.error {
+  color: #ff7b7b;
+}
+
+/* Контейнер для всего списка */
+.todo-list-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f5f6fa;
+}
+
+/* Контейнер для элементов */
+.todo-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px 0;
+}
+
+/* Содержимое элемента */
+.todo-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+
+/* Индикатор статуса */
+.status-indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #f1c40f;
+  flex-shrink: 0;
+}
+
+.status-completed {
+  background-color: #2ecc71;
+}
+
+/* Контейнер для текста */
+.todo-text-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  gap: 15px;
+}
+
+/* Состояние редактирования */
+.todo-edit {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+}
+
+.todo-title {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.todo-button:hover {
+  background-color: #2980b9;
+}
+
+.todo-button.active {
+  background-color: #2ecc71;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  font-size: 16px;
+  color: #666;
+}
+
+.error {
+  color: #e74c3c;
+  padding: 20px;
+  text-align: center;
+  background-color: #ffd5d5;
+  border-radius: 8px;
+}
+
+.no-todos {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-size: 16px;
+}
+
+.all-todos-container {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f0f0f0;
+  border-radius: 8px;
+}
+
+.all-todos-container h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.todo-debug-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 12px 15px;
+  margin: 5px 0;
+  border-radius: 4px;
+}
+
+.todo-debug-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.todo-debug-number {
+  color: #333;
+  min-width: 20px;
+}
+
+.todo-debug-circle {
+  color: #f1c40f;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.todo-debug-title {
+  color: #333;
+}
+
+.todo-debug-id {
+  color: #666;
+  font-size: 13px;
+}
+
+.todo-reset-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #95a5a6;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.todo-reset-button:hover {
+  background-color: #7f8c8d;
+}
+
+/* Увеличиваем расстояние между кнопками */
+.todo-actions {
+  display: flex;
+  gap: 16px; /* Увеличиваем с 8px до 16px */
+}
