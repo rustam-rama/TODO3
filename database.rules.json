@@ -3,6 +3,7 @@
     "todos": {
       ".read": true,
       ".write": true,
+      ".indexOn": ["title"],
       "$todoId": {
         ".read": true,
         ".write": true,

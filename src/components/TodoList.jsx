@@ -12,7 +12,7 @@ import TodoControls from "./TodoControls";
 import "./TodoList.css";
 
 const TodoList = () => {
-  const { todos, isLoading, error, setTodos } = useFetchTodo();
+  const { todos, isLoading, error, setTodos, fetchTodos } = useFetchTodo();
   const { addTodo } = useAddTodo(setTodos);
   const { updateTodo } = useUpdateTodo(setTodos);
   const { deleteTodo } = useDeleteTodo(setTodos);
@@ -21,8 +21,11 @@ const TodoList = () => {
   const [isSorted, setIsSorted] = useState(false);
 
   const debouncedSearch = useCallback(
-    debounce((query) => setSearchQuery(query), 300),
-    [setSearchQuery]
+    debounce((query) => {
+      setSearchQuery(query);
+      fetchTodos(query);
+    }, 20),
+    [fetchTodos]
   );
 
   const handleSort = useCallback(() => {

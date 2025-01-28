@@ -27,7 +27,11 @@ const TodoForm = ({ onAddTodo }) => {
         placeholder="Какая задача на сегодня?"
         className="todo-input"
       />
-      <button type="submit" className="add-button">
+      <button 
+        type="submit" 
+        className="add-button"
+        disabled={!newTodo.trim()}
+      >
         Добавить
       </button>
       {error && <div className="error">{error}</div>}
